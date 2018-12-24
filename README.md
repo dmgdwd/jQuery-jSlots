@@ -37,6 +37,7 @@ Attach easing plugin (optional but HIGHLY recommended for nice animation)
 Create a list and an element that will spin the slots
 
     <ul class="slot">
+        <li>0</li>
         <li>1</li>
         <li>2</li>
         <li>3</li>
@@ -44,6 +45,9 @@ Create a list and an element that will spin the slots
         <li>5</li>
         <li>6</li>
         <li>7</li>
+        <li>1</li>
+        <li>8</li>
+        <li>9</li>
     </ul>
 
     <!-- this button will start the spin -->
