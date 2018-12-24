@@ -6,19 +6,20 @@ jSlots is 2k of jQuery slot machine magic. It turns any list (`<ol>` or `<ul>`) 
 
 These are the options, with their default values, and what they do
 
-    $.jSlots.defaultOptions = {
-        number : 3,          // Number: number of slots
-        winnerNumber : 1,    // Number or Array: list item number(s) upon which to trigger a win, 1-based index, NOT ZERO-BASED
-        spinner : '',        // CSS Selector: element to bind the start event to
-        spinEvent : 'click', // String: event to start slots on this event
-        onStart : $.noop,    // Function: runs on spin start,
-        onEnd : $.noop,      // Function: run on spin end. It is passed (finalNumbers:Array). finalNumbers gives the index of the li each slot stopped on in order.
-        onWin : $.noop,      // Function: run on winning number. It is passed (winCount:Number, winners:Array, finalNumbers:Array)
-        easing : 'swing',    // String: easing type for final spin. I recommend the easing plugin and easeOutSine, or an easeOut of your choice.
-        time : 7000,         // Number: total time of spin animation
-        loops : 6            // Number: times it will spin during the animation
-    };
-
+        $.jSlots.defaultOptions = {
+            number : 3,          // Number: number of slots
+            winnerNumber : 0,    // Number or Array: list item number(s) upon which to trigger a win
+            spinner : '',        // CSS Selector: element to bind the start event to
+            spinEvent : 'click', // String: event to start slots on this event
+            onStart : $.noop,    // Function: runs on spin start,
+            onEnd : $.noop,      // Function: run on spin end. It is passed (finalNumbers:Array). finalNumbers gives the index of the li each slot stopped on in order.
+            onWin : $.noop,      // Function: run on winning number. It is passed (winCount:Number, winners:Array)
+            easing : 'swing',    // String: easing type for final spin
+            time : 7000,         // Number: total time of spin animation
+            loops : 6,            // Number: times it will spin during the animation
+            displayOrder : "DESC",   // Stop spinner rotation ASC is Right to Left  DESC is Left to right
+            winningNumArray : Array(),  // This allows a specific number to be the winner
+        };
 ## Usage
 
 Attach jQuery (successfully tested down to v1.4.1)
@@ -67,3 +68,87 @@ Styling is up to you, but jSlots supplies a jSlots-wrapper div around your lists
         display: inline-block; /* to size width correctly, can use float too, or width*/
         border: 1px solid #999;
     }
+Add @media declarations for responsive
+    
+          .slot {
+              float: left;
+              padding: 0 10px;
+              border: 1px solid #333;
+          }
+          .slot li {
+            padding: 0;
+            height: 300px;
+            font-size: 300px;
+            line-height: 1;
+          }
+          /*. Media query */
+        @media (min-width: 1281px) {
+        }
+
+        /* 
+          ##Device = Laptops, Desktops
+          ##Screen = B/w 1025px to 1280px
+        */
+
+        @media (min-width: 1025px) and (max-width: 1280px) {
+        }
+
+        /* 
+          ##Device = Tablets, Ipads (portrait)
+          ##Screen = B/w 768px to 1024px
+        */
+
+        @media (min-width: 768px) and (max-width: 1024px) {
+        }
+        /* 
+          ##Device = Tablets, Ipads (landscape)
+          ##Screen = B/w 768px to 1024px
+        */
+
+        @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+          .jSlots-wrapper {
+            height: 175px;
+          }
+          .slot li {
+            padding: 0;
+            height: 175px;
+            font-size: 175px;
+            line-height: 1;
+          }
+        }
+
+        /* 
+          ##Device = Low Resolution Tablets, Mobiles (Landscape)
+          ##Screen = B/w 481px to 767px
+        */
+
+        @media (min-width: 481px) and (max-width: 767px) {
+          .jSlots-wrapper {
+            height: 100px;
+          }
+          .slot li {
+            padding: 0;
+            height: 100px;
+            font-size: 100px;
+            line-height: 1;
+          }
+          
+          
+        }
+
+        /* 
+          ##Device = Most of the Smartphones Mobiles (Portrait)
+          ##Screen = B/w 320px to 479px
+        */
+
+        @media (min-width: 320px) and (max-width: 480px) {
+          .jSlots-wrapper {
+            height: 70px;
+          }
+          .slot li {
+            padding: 0;
+            height: 70px;
+            font-size: 70px;
+            line-height: 1;
+          }
+        }
