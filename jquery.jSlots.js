@@ -68,7 +68,6 @@
             // set sizes
             var $list = base.$el;
             var $li = $list.find('li').first();
-            console.dir($li);
             base.$liHeight = $li.outerHeight();
             base.$liWidth = $li.outerWidth();
             base.liCount = base.$el.children().length;
